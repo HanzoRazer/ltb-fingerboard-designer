@@ -1,0 +1,1 @@
+"""Body-related fretboard geometry."""

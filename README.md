@@ -1,66 +1,39 @@
 # ltb-fingerboard-designer
 
-LTB Fingerboard Designer - Fingerboard radius, scale, and multiscale calculator
+Fingerboard geometry: scale length, compound radius, fret positions, nut slots, fret leveling, wire selection, and nut compensation. Optional fret-slot CAM modules are included for library use.
 
-## Status
+**Source of truth:** [luthiers-toolbox](https://github.com/HanzoRazer/luthiers-toolbox) — populated via **Staged Copy Publish** (see `SPRINTS.md` there).
 
-🚧 **Minimal Skeleton** - Features extracted from golden master as needed.
+## Layout
 
-**Strategy:** Lean extraction (no template stubs)  
-**Approach:** Clean slate → Extract specific features incrementally  
-**Benefit:** Only includes code that's actually implemented
-
-## Quick Start
-
-### Server (FastAPI)
-
-**Dependencies already installed!** Just activate and run:
-
-```powershell
-cd server
-.\.venv\Scripts\Activate.ps1
-copy .env.example .env
-uvicorn app.main:app --reload
+```
+src/ltb_fingerboard/
+  calculators/          # fret_slots_*, fret_leveling, fret_wire, nut_slot, nut_compensation, temperaments
+  instrument_geometry/  # models, neck/*, body/fretboard_geometry
+  core/safety.py
+  rmos/context.py       # slim RmosContext (from_model_id not bundled)
+  data_registry/        # minimal Registry stub for CAM defaults
+  schemas/cam_fret_slots.py
+  api/fretwork_router.py
+  main.py
+frontend/src/components/  # Vue components copied from main client
 ```
 
-**If you need to reinstall:**
+## API
 
-```powershell
-cd server
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
+```bash
+pip install -e .
+uvicorn ltb_fingerboard.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### Client Setup
+- `GET /health`
+- `GET /docs`
+- Routes under `/api/instrument/` — nut slots, fret leveling, fret wire, nut compensation (same paths as monolith `fretwork_router`).
 
-```powershell
-cd client
-npm create vite@latest . -- --template vue-ts
-npm install
-npm run dev
-```
+## Extra modules (not mounted as HTTP in this repo)
 
-## Extracting Features
-
-1. Identify feature in [Golden Master](https://github.com/HanzoRazer/luthiers-toolbox)
-2. Copy specific files/components needed
-3. Strip unnecessary features (downgrade to edition tier)
-4. Test extraction
-5. Commit with clear feature description
-
-## Documentation
-
-- [Product Segmentation Strategy](https://github.com/HanzoRazer/luthiers-toolbox/blob/main/docs/products/MASTER_SEGMENTATION_STRATEGY.md)
-- [Setup Guide](https://github.com/HanzoRazer/luthiers-toolbox/blob/main/PRODUCT_REPO_SETUP.md)
-
-## Related Repositories
-
-- [Golden Master](https://github.com/HanzoRazer/luthiers-toolbox) - Main repository with templates and documentation
-- [Express Edition](https://github.com/HanzoRazer/ltb-express)
-- [Pro Edition](https://github.com/HanzoRazer/ltb-pro)
-- [Enterprise Edition](https://github.com/HanzoRazer/ltb-enterprise)
+`fret_slots_cam`, `fret_slots_export`, `fret_slots_fan_cam` are included for import by tools or a future router; they depend on `RmosContext.from_dict()` and the local Registry stub.
 
 ## License
 
-Copyright © 2025 Luthier's ToolBox Project
+See `LICENSE`.
