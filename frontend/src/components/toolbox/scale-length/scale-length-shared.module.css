@@ -1,0 +1,60 @@
+/**
+ * Scale-Length Shared CSS Module
+ * Re-exports from generic dark-theme-shared.module.css
+ * Maintains backward compatibility for scale-length components
+ */
+
+/* Import all classes from the generic dark theme module */
+.sectionHeader { composes: sectionHeader from "@/styles/dark-theme-shared.module.css"; }
+.tabContent { composes: tabContent from "@/styles/dark-theme-shared.module.css"; }
+
+/* Cards */
+.card { composes: card from "@/styles/dark-theme-shared.module.css"; }
+.cardSmall { composes: cardSmall from "@/styles/dark-theme-shared.module.css"; }
+
+/* Highlight Cards */
+.highlightCard { composes: highlightCard from "@/styles/dark-theme-shared.module.css"; }
+.highlightCardDanger { composes: highlightCardDanger from "@/styles/dark-theme-shared.module.css"; }
+.highlightCardSuccess { composes: highlightCardSuccess from "@/styles/dark-theme-shared.module.css"; }
+.highlightCardInfo { composes: highlightCardInfo from "@/styles/dark-theme-shared.module.css"; }
+.highlightCardWarning { composes: highlightCardWarning from "@/styles/dark-theme-shared.module.css"; }
+
+/* Data Grid */
+.dataGrid { composes: dataGrid from "@/styles/dark-theme-shared.module.css"; }
+.dataRow { composes: dataRow from "@/styles/dark-theme-shared.module.css"; }
+.dataRowHeader { composes: dataRowHeader from "@/styles/dark-theme-shared.module.css"; }
+
+/* Inputs */
+.inputGroup { composes: inputGroup from "@/styles/dark-theme-shared.module.css"; }
+.input { composes: input from "@/styles/dark-theme-shared.module.css"; }
+.select { composes: select from "@/styles/dark-theme-shared.module.css"; }
+.inputWithUnit { composes: inputWithUnit from "@/styles/dark-theme-shared.module.css"; }
+
+/* Buttons */
+.btn { composes: btn from "@/styles/dark-theme-shared.module.css"; }
+.btnPrimary { composes: btnPrimary from "@/styles/dark-theme-shared.module.css"; }
+.btnOutline { composes: btnOutline from "@/styles/dark-theme-shared.module.css"; }
+
+/* Status */
+.statusDanger { composes: statusDanger from "@/styles/dark-theme-shared.module.css"; }
+.statusSuccess { composes: statusSuccess from "@/styles/dark-theme-shared.module.css"; }
+.statusWarning { composes: statusWarning from "@/styles/dark-theme-shared.module.css"; }
+.statusInfo { composes: statusInfo from "@/styles/dark-theme-shared.module.css"; }
+
+/* Formula */
+.formulaBox { composes: formulaBox from "@/styles/dark-theme-shared.module.css"; }
+.formula { composes: formula from "@/styles/dark-theme-shared.module.css"; }
+
+/* Notes */
+.note { composes: note from "@/styles/dark-theme-shared.module.css"; }
+.noteWarning { composes: noteWarning from "@/styles/dark-theme-shared.module.css"; }
+.noteSuccess { composes: noteSuccess from "@/styles/dark-theme-shared.module.css"; }
+.noteInfo { composes: noteInfo from "@/styles/dark-theme-shared.module.css"; }
+
+/* Text */
+.textMuted { composes: textMuted from "@/styles/dark-theme-shared.module.css"; }
+.textPrimary { composes: textPrimary from "@/styles/dark-theme-shared.module.css"; }
+.textAccent { composes: textAccent from "@/styles/dark-theme-shared.module.css"; }
+.textDanger { composes: textDanger from "@/styles/dark-theme-shared.module.css"; }
+.textSuccess { composes: textSuccess from "@/styles/dark-theme-shared.module.css"; }
+.textWarning { composes: textWarning from "@/styles/dark-theme-shared.module.css"; }

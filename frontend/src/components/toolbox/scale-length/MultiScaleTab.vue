@@ -1,0 +1,182 @@
+<template>
+  <div :class="shared.tabContent">
+    <div :class="shared.sectionHeader">
+      <h2>Multi-Scale (Fanned Fret) Innovation</h2>
+      <p>Why modern guitars are moving beyond single scale lengths</p>
+    </div>
+
+    <div :class="styles.multiscaleEducation">
+      <div :class="styles.problemSolution">
+        <div :class="shared.highlightCardDanger">
+          <h3>🔴 The Single-Scale Compromise</h3>
+          <p>Traditional guitars force all strings to use the same scale length:</p>
+          <ul>
+            <li><strong>Treble strings:</strong> Higher tension than ideal (harder to bend)</li>
+            <li><strong>Bass strings:</strong> Lower tension than ideal (less definition)</li>
+            <li><strong>Result:</strong> Every string is a compromise</li>
+          </ul>
+          <div :class="styles.example">
+            <strong>Example: Baritone at 25.5" scale</strong>
+            <div :class="styles.calcResultProblem">
+              Low B string: 12.8 lbs (too floppy!)
+            </div>
+          </div>
+        </div>
+
+        <div :class="shared.highlightCardSuccess">
+          <h3>✅ The Multi-Scale Solution</h3>
+          <p>Different scale length for each string, optimized independently:</p>
+          <ul>
+            <li><strong>Treble E:</strong> 25.5" (comfortable tension, easy bending)</li>
+            <li><strong>Bass E:</strong> 27.0" (tight, defined, no flop)</li>
+            <li><strong>Middle strings:</strong> Smoothly interpolated</li>
+          </ul>
+          <div :class="styles.example">
+            <strong>Same baritone with multi-scale:</strong>
+            <div :class="styles.calcResultSolution">
+              Low B string: 14.3 lbs (perfect!)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div :class="shared.card">
+        <h3>Visual: How Fanned Frets Work</h3>
+        <div :class="styles.fretVisualization">
+          <div :class="styles.fretLineTreble">
+            <div :class="styles.fretLabel">
+              Treble Side (High E)
+            </div>
+            <div :class="styles.fretVisual">
+              |———————————————————| 25.5" scale
+            </div>
+            <div :class="styles.fretTension">
+              15.1 lbs tension
+            </div>
+          </div>
+          <div :class="styles.fretLineBass">
+            <div :class="styles.fretLabel">
+              Bass Side (Low E)
+            </div>
+            <div :class="styles.fretVisual">
+              |—————————————————————————| 27.0" scale
+            </div>
+            <div :class="styles.fretTension">
+              14.8 lbs tension (with .046" gauge)
+            </div>
+          </div>
+        </div>
+        <p :class="styles.diagramNote">
+          Notice how the bass side is longer. Frets are angled (fanned) to accommodate different
+          scale lengths. The 12th fret is typically placed at the ergonomic "neutral" position.
+        </p>
+      </div>
+
+      <div :class="shared.card">
+        <h3>Tension Comparison: Single vs Multi-Scale</h3>
+        <div :class="styles.comparisonTable">
+          <div :class="styles.comparisonHeader">
+            <div>String</div>
+            <div>Single 25.5"</div>
+            <div>Multi (25.5"-27")</div>
+            <div>Improvement</div>
+          </div>
+          <div
+            v-for="row in comparisonData"
+            :key="row.string"
+            :class="styles.comparisonRow"
+          >
+            <div>{{ row.string }}</div>
+            <div>{{ row.single }}</div>
+            <div>{{ row.multi }}</div>
+            <div :class="improvementClass(row.level)">
+              {{ row.improvement }}
+            </div>
+          </div>
+        </div>
+        <p :class="styles.comparisonNote">
+          Multi-scale dramatically improves bass string tension while keeping treble strings comfortable.
+          This is why extended-range guitars (7, 8, 9 strings) almost always use fanned frets.
+        </p>
+      </div>
+
+      <div :class="styles.ergonomicBenefits">
+        <h3>Ergonomic Benefits</h3>
+        <div :class="styles.benefitGrid">
+          <div
+            v-for="benefit in benefits"
+            :key="benefit.title"
+            :class="styles.benefitCard"
+          >
+            <div :class="styles.benefitIcon">
+              {{ benefit.icon }}
+            </div>
+            <div :class="styles.benefitTitle">
+              {{ benefit.title }}
+            </div>
+            <div :class="styles.benefitText">
+              {{ benefit.text }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div :class="shared.highlightCardInfo">
+        <h3>Custom Scale Exploration</h3>
+        <p>
+          Want to innovate? Consider a 24.9" hybrid scale:
+          <strong>slightly easier bending than Fender, slightly brighter than Gibson.</strong>
+        </p>
+        <p>
+          Or go extreme: 28" baritone for drop G# tuning, 22" travel guitar for portability.
+          The math is your guide!
+        </p>
+        <button
+          :class="shared.btnPrimary"
+          @click="$emit('goToTension')"
+        >
+          Explore Custom Scales in Tension Calculator →
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import styles from "./MultiScaleTab.module.css";
+import shared from "./scale-length-shared.module.css";
+
+defineEmits<{
+  goToTension: []
+}>()
+
+/**
+ * Helper for dynamic improvement level classes
+ */
+function improvementClass(level: string): string {
+  const classMap: Record<string, string> = {
+    neutral: styles.neutral,
+    slight: styles.slight,
+    good: styles.good,
+    excellent: styles.excellent,
+  };
+  return classMap[level] || "";
+}
+
+const comparisonData = [
+  { string: 'High E (.010")', single: '15.1 lbs', multi: '15.1 lbs', improvement: 'Same', level: 'neutral' },
+  { string: 'B (.013")', single: '15.2 lbs', multi: '15.4 lbs', improvement: '+1.3%', level: 'slight' },
+  { string: 'G (.017")', single: '15.0 lbs', multi: '15.6 lbs', improvement: '+4%', level: 'good' },
+  { string: 'D (.026")', single: '14.9 lbs', multi: '16.0 lbs', improvement: '+7.4%', level: 'good' },
+  { string: 'A (.036")', single: '14.3 lbs', multi: '15.8 lbs', improvement: '+10.5%', level: 'excellent' },
+  { string: 'Low E (.046")', single: '13.8 lbs', multi: '15.7 lbs', improvement: '+13.8%', level: 'excellent' }
+]
+
+const benefits = [
+  { icon: '🤚', title: 'Natural Hand Position', text: 'Fanned frets follow the natural angle of your hand/wrist, reducing strain during extended playing sessions.' },
+  { icon: '🎯', title: 'Better Intonation', text: 'Longer bass scales reduce compensation percentage, making intonation more accurate across the entire fretboard.' },
+  { icon: '🔊', title: 'Balanced Tone', text: 'Each string has optimal tension for its frequency range, creating a more balanced and articulate sound across all strings.' },
+  { icon: '⚡', title: 'Extended Range', text: 'Makes 7, 8, and 9-string guitars playable by ensuring low strings have enough tension for clarity and definition.' }
+]
+</script>
+

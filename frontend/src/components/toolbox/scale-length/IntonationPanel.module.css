@@ -1,0 +1,103 @@
+/**
+ * IntonationPanel CSS Module
+ * Component-specific styles (shared styles in scale-length-shared.module.css)
+ */
+
+/* =============================================================================
+   Compensation Table (component-specific grid layout)
+   ============================================================================= */
+
+.compHeader {
+  padding: 20px;
+  background: #35363a;
+}
+
+.compTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e8eaed;
+  margin-bottom: 4px;
+}
+
+.compSubtitle {
+  font-size: 13px;
+  color: #9aa0a6;
+}
+
+.compGrid {
+  padding: 0 20px 20px;
+}
+
+.compRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1.5fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #3c4043;
+  font-size: 14px;
+  color: #bdc1c6;
+}
+
+.compRow:last-child {
+  border-bottom: none;
+}
+
+.compHeaderRow {
+  composes: compRow;
+  font-weight: 600;
+  color: #8ab4f8;
+}
+
+.highlightReference {
+  composes: compRow;
+  background: rgba(52, 168, 83, 0.15);
+  margin: 0 -20px;
+  padding: 12px 20px;
+  color: #51cf66;
+}
+
+.highlightMax {
+  composes: compRow;
+  background: rgba(251, 188, 5, 0.15);
+  margin: 0 -20px;
+  padding: 12px 20px;
+  color: #ffc107;
+}
+
+/* =============================================================================
+   Formula Example (component-specific text styling)
+   ============================================================================= */
+
+.formulaExample {
+  font-size: 14px;
+  color: #9aa0a6;
+}
+
+/* =============================================================================
+   Compensation Factors (component-specific)
+   ============================================================================= */
+
+.factorList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.factorItem {
+  padding: 16px;
+  background: #1e1e1e;
+  border-radius: 8px;
+}
+
+.factorItem strong {
+  display: block;
+  color: #8ab4f8;
+  margin-bottom: 8px;
+}
+
+.factorItem div {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #9aa0a6;
+}
+

@@ -1,0 +1,124 @@
+/**
+ * IntonationTab CSS Module
+ * Component-specific styles (shared styles in scale-length-shared.module.css)
+ */
+
+/* =============================================================================
+   Education Container
+   ============================================================================= */
+
+.intonationEducation {
+  max-width: 1000px;
+}
+
+/* =============================================================================
+   Compensation Table Header (component-specific)
+   ============================================================================= */
+
+.compHeader {
+  margin-bottom: 16px;
+}
+
+.compTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffd700;
+  margin-bottom: 6px;
+}
+
+.compSubtitle {
+  font-size: 13px;
+  color: #9aa0a6;
+  font-style: italic;
+}
+
+/* =============================================================================
+   Row Highlights (component-specific)
+   ============================================================================= */
+
+.highlightReference {
+  display: grid;
+  grid-template-columns: 100px 80px 120px 120px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  align-items: center;
+  background: rgba(138, 180, 248, 0.2);
+  border: 2px solid #8ab4f8;
+  font-weight: 500;
+}
+
+.highlightMax {
+  display: grid;
+  grid-template-columns: 100px 80px 120px 120px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  align-items: center;
+  background: rgba(234, 67, 53, 0.2);
+  border: 2px solid #ea4335;
+  font-weight: 600;
+}
+
+/* =============================================================================
+   Formula Example (component-specific styling)
+   ============================================================================= */
+
+.formulaExample {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #51cf66;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.formulaExample strong {
+  font-size: 18px;
+}
+
+/* =============================================================================
+   Compensation Factors (component-specific)
+   ============================================================================= */
+
+.factorList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.factorItem {
+  font-size: 13px;
+  line-height: 1.6;
+  padding-left: 16px;
+  border-left: 3px solid rgba(138, 180, 248, 0.5);
+}
+
+.factorItem strong {
+  color: #8ab4f8;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* =============================================================================
+   Responsive (component-specific grid adjustments)
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .highlightReference,
+  .highlightMax {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .highlightReference > div,
+  .highlightMax > div {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .highlightReference > div:last-child,
+  .highlightMax > div:last-child {
+    border-bottom: none;
+  }
+}
